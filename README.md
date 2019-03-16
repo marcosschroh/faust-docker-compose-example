@@ -1,46 +1,30 @@
-Faust-Example Docker
+Faust-Docker-Compose
 ====================
 
-Example running Faust with Docker and dynamic configurations. 
+Example running Faust with Docker Compose. 
 
 Read more about Faust here: 
 https://github.com/robinhood/faust
 
-Configuration
+Project:
+--------
+
+The project skeleton is defined as a medium/large project according to [faust layout](https://faust.readthedocs.io/en/latest/userguide/application.html#projects-and-directory-layout)
+
+The `setup.py` has the entrypoint to resolve the [entrypoint problem](https://faust.readthedocs.io/en/latest/userguide/application.html#problem-entrypoint)
+
+
+Applications:
 -------------
 
-By configuring different entrypoints in `setup.py`, you can define config classes that hold important settings you need
-to use in your Faust processor. 
-
-e.g. in this example, we have 2 classes defined by 2 entrypoints, `video` and `channel`. By passing one of those to the
-Faust cli as an environment variable, we can then load that config class in our `app.py` code and get access to whichever necessary settings.
-
-Example: `CONFIG=video faust -A example.app worker -lINFO` (see run.sh for how it's used with Docker.)
-
-Then in `app.py` we call a special function `load_config` that uses the pkg_resources library to load this class that we defined
-as an entrypoint in `setup.py`. Simply initialize that class that's returned and you have access to whatever settings you need. 
-
-Configuration class example:
-
-```python
-from example.utils.config_base import ConfigBase
+There is one application called `page_views` that corresponds to [Tutorial: Count page views](https://faust.readthedocs.io/en/latest/playbooks/pageviews.html)
 
 
-class VideoConfig(ConfigBase):
-    def __init__(self):
-        super().__init__()
-        self.source_topic = "yt_video"
-        self.id_field_name = "yt_video_id"
-        self.output_record_key = "yt_video_id"
-```
+Faust Project Dockerfile: 
+-------------------------
 
-Extending Docker: 
------------------
+The `Dockerfile` is based on  `python:3.7-slim`. The most important here is that the [`entrypoint`]() will wait for `kafka` too be ready and after that execute the script [`run.sh`]()
 
-There's an example Dockerfile here that use environment variables at the end, and defines `run.sh` as the command that gets called with `docker run`. 
-
-After building the docker image, you can specify which config class to load like so: 
-`docker run -e WORKER=example.app -e WORKER_PORT=6066 -e CONFIG=video faust-example:{tag}`
 
 Docker compose:
 ---------------
@@ -53,5 +37,22 @@ Useful ENVIRONMENT variables that you may change:
 |Variable| description  | example |
 |--------|--------------|---------|
 | PROJECT_SETTINGS       | File that contains project settings. For example [settings.ini](https://github.com/marcosschroh/faust-example/blob/master/settings.ini)|   `PROJECT_SETTINGS=settings.ini`|
-| CONFIG_CLASS | Config class to use when the worker runs | `CONFIG_CLASS=video`|
+| WORKER | Entrypoint in setup.py | `WORKER=example`|
 | WORKER_PORT | Worker port | `WORKER_PORT=6066` |
+| WORKER_LOGLEVEL | Log level for the worker | `WORKER_LOGLEVEL=info`. |
+
+
+Commands:
+---------
+
+* Start application: `make run-dev`
+* Stop and remove containers: `make clean`
+* List topics: `make list-topics`
+* Send events to page_view topic/agent: `make send-page-view-event payload='{"id": "foo", "user": "bar"}'`
+
+
+WIP:
+----
+
+* Add Leader Election application
+* Add integration with Schma registry

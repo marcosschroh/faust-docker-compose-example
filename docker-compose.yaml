@@ -7,11 +7,11 @@ services:
     depends_on:
       - zookeeper
       - kafka
-      # - "schema-registry"
+      - "schema-registry"
     environment:
       - WORKER=example
       - WORKER_PORT=6066
-      - CONFIG_CLASS=video
+      - WORKER_LOGLEVEL=info
       - PROJECT_SETTINGS=settings.ini
       - CONFLUENT_BOOSTRAP_SERVERS=kafka://kafka:9092
       - CONFLUENT_SCHEMA_REGISTRY_URL=http://schema-registry:8081
@@ -42,22 +42,17 @@ services:
       - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
       - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT_HOST://localhost:29092,PLAINTEXT://kafka:9092
       - KAFKA_BROKER_ID=1
-    # healthcheck:
-    #     test: ["CMD", "curl", "-f", "http://localhost:9092"]
-    #     interval: 30s
-    #     timeout: 10s
-    #     retries: 5
-  # schema-registry:
-  #   image: confluentinc/cp-schema-registry
-  #   hostname: schema-registry
-  #   container_name: schema-registry
-  #   depends_on:
-  #     - kafka
-  #     - zookeeper
-  #   ports:
-  #     - "8081:8081"
-  #   environment:
-  #     - SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL=zookeeper:32181
-  #     - SCHEMA_REGISTRY_HOST_NAME=schema-registry
-  #     - SCHEMA_REGISTRY_DEBUG=true
+  schema-registry:
+    image: confluentinc/cp-schema-registry
+    hostname: schema-registry
+    container_name: schema-registry
+    depends_on:
+      - kafka
+      - zookeeper
+    ports:
+      - "8081:8081"
+    environment:
+      - SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL=zookeeper:32181
+      - SCHEMA_REGISTRY_HOST_NAME=schema-registry
+      - SCHEMA_REGISTRY_DEBUG=true
 
