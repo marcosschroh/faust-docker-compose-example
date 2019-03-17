@@ -17,7 +17,8 @@ The `setup.py` has the entrypoint to resolve the [entrypoint problem](https://fa
 Applications:
 -------------
 
-There is one application called `page_views` that corresponds to [Tutorial: Count page views](https://faust.readthedocs.io/en/latest/playbooks/pageviews.html)
+* *Page Views*: This application corresponds to [Tutorial: Count page views](https://faust.readthedocs.io/en/latest/playbooks/pageviews.html)
+* *Leader Election*: This application corresponds to [Tutorial: Leader Election](https://faust.readthedocs.io/en/latest/playbooks/leaderelection.html)
 
 
 Faust Project Dockerfile: 
@@ -45,7 +46,7 @@ Useful ENVIRONMENT variables that you may change:
 Commands:
 ---------
 
-* Start application: `make run-dev`
+* Start application: `make run-dev`. This command start both the *Page Views* and *Leader Election* applications
 * Stop and remove containers: `make clean`
 * List topics: `make list-topics`
 * Send events to page_view topic/agent: `make send-page-view-event payload='{"id": "foo", "user": "bar"}'`
@@ -54,5 +55,4 @@ Commands:
 WIP:
 ----
 
-* Add Leader Election application
 * Add integration with Schma registry
