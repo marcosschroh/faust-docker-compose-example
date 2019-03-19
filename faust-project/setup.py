@@ -7,20 +7,21 @@ requires = [
     "faust==1.4.9",
     "robinhood-aiokafka>=0.4.19,<0.5.0",
     "requests",
+    "confluent-kafka==0.11.6"
 ]
 
 setup(
     name='faust-example',
     version='0.0.1',
-    description='Faust example with Docker',
+    description='Faust example with Docker Compose',
     long_description='''
-    Example running Faust with Docker containers
+    Example running Faust with Docker Compose (zookeeper, kafka and schema-registry)
     ''',
     classifiers=[
         "Programming Language :: Python",
     ],
-    author='Ryan Whitten',
-    author_email='rwhitten577@gmail.com',
+    author='Marcos Schroh',
+    author_email='schrohm@gmail.com',
     url='',
     packages=find_packages(),
     include_package_data=True,
