@@ -9,7 +9,6 @@ logger = logging.getLogger(__name__)
 
 
 KAFKA_BROKER = SETTINGS.get("confluent", "bootstrap.servers")
-SCHEMA_REGISTRY_URL = SETTINGS.get("confluent", "schema.registry.url")
 
 app = faust.App(
     version=1,

@@ -10,5 +10,12 @@ done
 
 >&2 echo "Kafka is up - executing command"
 
+until nc -vz schema-registry 8081; do
+  >&2 echo "Waiting for Schema Registry to be ready... - sleeping"
+  sleep 2
+done
+
+>&2 echo "Schema Registry is up - executing command"
+
 echo "Executing command ${cmd}"
 exec $cmd

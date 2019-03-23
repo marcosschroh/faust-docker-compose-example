@@ -7,7 +7,6 @@ requires = [
     "faust==1.4.9",
     "robinhood-aiokafka>=0.4.19,<0.5.0",
     "requests",
-    "confluent-kafka==0.11.6"
 ]
 
 setup(
@@ -33,6 +32,9 @@ setup(
     entry_points={
         'console_scripts': [
             'example = example.app:main',
+        ],
+        'faust.codecs': [
+            'avro_users = example.codecs.avro:avro_user_codec',
         ],
     },
 )

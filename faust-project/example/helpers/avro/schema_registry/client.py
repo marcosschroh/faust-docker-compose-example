@@ -194,7 +194,7 @@ class CachedSchemaRegistryClient(object):
         """
 
         schemas_to_id = self.subject_to_schema_ids[subject]
-        schema_id = schemas_to_id.get(avro_schema, None)
+        schema_id = schemas_to_id.get(avro_schema.name, None)
         if schema_id is not None:
             return schema_id
         # send it up

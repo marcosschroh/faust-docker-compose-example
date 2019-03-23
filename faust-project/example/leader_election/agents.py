@@ -9,7 +9,7 @@ async def say(greetings):
         print(greeting)
 
 
-@app.timer(2.0, on_leader=True)
+@app.timer(4.0, on_leader=True)
 async def publish_greetings():
     print('PUBLISHING ON LEADER!')
     greeting = str(random.random())

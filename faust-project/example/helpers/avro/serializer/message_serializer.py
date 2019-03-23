@@ -29,8 +29,8 @@ import traceback
 import avro
 import avro.io
 
-from example.utils.avro.errors import ClientError
-from example.utils.avro.serializer.errors import SerializerError, KeySerializerError, \
+from example.helpers.avro.schema_registry.errors import ClientError
+from example.helpers.avro.serializer.errors import SerializerError, KeySerializerError, \
     ValueSerializerError
 
 log = logging.getLogger(__name__)
@@ -73,6 +73,7 @@ class MessageSerializer(object):
         self.id_to_writers = {}
         self.reader_key_schema = reader_key_schema
         self.reader_value_schema = reader_value_schema
+        self.schema_name_to_id = {}
 
     # Encoder support
     def _get_encoder_func(self, writer_schema):
@@ -94,19 +95,26 @@ class MessageSerializer(object):
         :returns: Encoded record with schema ID as bytes
         :rtype: bytes
         """
-        serialize_err = KeySerializerError if is_key else ValueSerializerError
+        schema_id = self.schema_name_to_id.get(schema.name)
 
-        subject_suffix = ('-key' if is_key else '-value')
-        # get the latest schema for the subject
-        subject = topic + subject_suffix
-        # register it
-        schema_id = self.registry_client.register(subject, schema)
         if not schema_id:
-            message = "Unable to retrieve schema id for subject %s" % (subject)
-            raise serialize_err(message)
+            serialize_err = KeySerializerError if is_key else ValueSerializerError
 
-        # cache writer
-        self.id_to_writers[schema_id] = self._get_encoder_func(schema)
+            subject_suffix = ('-key' if is_key else '-value')
+            # get the latest schema for the subject
+            subject = topic + subject_suffix
+            # register it
+            schema_id = self.registry_client.register(subject, schema)
+            if not schema_id:
+                message = "Unable to retrieve schema id for subject %s" % (subject)
+                raise serialize_err(message)
+
+            # cache writer
+            self.id_to_writers[schema_id] = self._get_encoder_func(schema)
+
+            # cache the schema_id using the schema name
+            logging.info(f"Caching Schema {schema.name} with ID: {schema_id}")
+            self.schema_name_to_id[schema.name] = schema_id
 
         return self.encode_record_with_schema_id(schema_id, record, is_key=is_key)
 
