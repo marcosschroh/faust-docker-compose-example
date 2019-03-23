@@ -74,9 +74,8 @@ For our demostration in the `Users` application we are using the following schem
 ```
 
 In order to use `avro schemas` with `Faust` we need to define a custom codec, a custom serializer and be able to talk with the `schema-registry`.
-You can find the custom codec called `avro_users` registered using the [codec registation]
-(https://faust.readthedocs.io/en/latest/userguide/models.html#codec-registry) approach described by faust.
-The [AvroSerializer]() is in charge to `encode` and `decode` messages using the [schema registry client]().
+You can find the custom codec called `avro_users` registered using the [codec registation](https://faust.readthedocs.io/en/latest/userguide/models.html#codec-registry) approach described by faust.
+The [AvroSerializer](https://github.com/marcosschroh/faust-docker-compose-example/blob/master/faust-project/example/helpers/avro/serializer/faust_avro_serializer.py#L8) is in charge to `encode` and `decode` messages using the [schema registry client](https://github.com/marcosschroh/faust-docker-compose-example/blob/master/faust-project/example/helpers/avro/schema_registry/client.py#L43).
 
 Now the final step is to integrate the faust model with the `AvroSerializer`.
 
