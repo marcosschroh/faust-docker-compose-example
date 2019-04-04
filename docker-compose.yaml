@@ -4,7 +4,6 @@ services:
     tty: true
     build: ./faust-project
     command: ./run.sh
-    # image: marcosschroh/faust-docker-example:1.0.0
     depends_on:
       - zookeeper
       - kafka
