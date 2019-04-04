@@ -10,7 +10,7 @@ done
 
 >&2 echo "Kafka is up - executing command"
 
-until nc -vz ${SCHEMA_REGISTRY_SERVER} ${SCHEMA_REGISTRY_SERVER_PORT}; do
+until nc -vz ${CONFLUENT_SCHEMA_REGISTRY_SERVER} ${CONFLUENT_SCHEMA_REGISTRY_SERVER_PORT}; do
   >&2 echo "Waiting for Schema Registry to be ready... - sleeping"
   sleep 2
 done
