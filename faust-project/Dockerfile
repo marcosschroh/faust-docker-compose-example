@@ -18,7 +18,7 @@ COPY . /faust-project
 
 RUN pip3 install -e .
 
-ENTRYPOINT ["./wait_for_kafka.sh"]
+ENTRYPOINT ["./wait_for_services.sh"]
 
 CMD ["./run.sh", "${WORKER}", "${WORKER_PORT}", "${CONFIG_CLASS}"]
 

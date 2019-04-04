@@ -4,6 +4,7 @@ services:
     tty: true
     build: ./faust-project
     command: ./run.sh
+    # image: marcosschroh/faust-docker-example:1.0.0
     depends_on:
       - zookeeper
       - kafka
@@ -13,8 +14,12 @@ services:
       - WORKER_PORT=6066
       - WORKER_LOGLEVEL=info
       - PROJECT_SETTINGS=settings.ini
-      - CONFLUENT_BOOSTRAP_SERVERS=kafka://kafka:9092
+      - CONFLUENT_BOOSTRAP_SERVER=kafka://kafka:9092
+      - CONFLUENT_BOOSTRAP_SERVER_NAME=kafka
+      - CONFLUENT_BOOSTRAP_SERVER_PORT=9092
       - CONFLUENT_SCHEMA_REGISTRY_URL=http://schema-registry:8081
+      - CONFLUENT_SCHEMA_REGISTRY_SERVER=schema-registry
+      - CONFLUENT_SCHEMA_REGISTRY_SERVER_PORT=8081
     volumes:
       - ./settings.ini:/faust-project/settings.ini
     ports:

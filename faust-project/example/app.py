@@ -8,7 +8,7 @@ from example import SETTINGS
 logger = logging.getLogger(__name__)
 
 
-KAFKA_BROKER = SETTINGS.get("confluent", "bootstrap.servers")
+KAFKA_BROKER = SETTINGS.get("confluent", "bootstrap.server")
 
 app = faust.App(
     version=1,
