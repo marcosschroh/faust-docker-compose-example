@@ -1,21 +1,15 @@
-import logging
-import logging.config
-
 import faust
 
-from example import SETTINGS
-
-logger = logging.getLogger(__name__)
-
-
-KAFKA_BROKER = SETTINGS.get("confluent", "bootstrap.server")
+from simple_settings import settings
+from logging.config import dictConfig
 
 app = faust.App(
     version=1,
     autodiscover=True,
     origin='example',
     id="1",
-    broker=KAFKA_BROKER,
+    broker=settings.KAFKA_BOOTSTRAP_SERVER,
+    logging_config=dictConfig(settings.LOGGING),
 )
 
 

@@ -44,5 +44,5 @@ list-topics:
 
 # Faust commands related
 send-page-view-event:
-	docker-compose exec ${service} faust -A ${worker} send page_views '${payload}'
+	docker-compose exec -e SIMPLE_SETTINGS=settings ${service} faust -A ${worker} send page_views '${payload}'
 

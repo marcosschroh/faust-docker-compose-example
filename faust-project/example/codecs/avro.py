@@ -3,10 +3,10 @@ from avro.schema import SchemaFromJSONData
 from example.helpers.avro.schema_registry.client import CachedSchemaRegistryClient
 from example.helpers.avro.serializer.faust_avro_serializer import AvroSerializer
 
-from example import SETTINGS
+from simple_settings import settings
 
 
-SCHEMA_REGISTRY_URL = SETTINGS.get("confluent", "schema.registry.url")
+SCHEMA_REGISTRY_URL = settings.SCHEMA_REGISTRY_URL
 
 # Initialize Schema Registry Client
 client = CachedSchemaRegistryClient(url=SCHEMA_REGISTRY_URL)
