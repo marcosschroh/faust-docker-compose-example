@@ -4,9 +4,10 @@ requires = [
     "avro-python3",
     "colorlog==3.1.4",
     "fastavro",
-    "faust==1.4.9",
-    "robinhood-aiokafka>=0.4.19,<0.5.0",
+    "faust==1.5.4",
+    "robinhood-aiokafka==1.0.2",
     "requests",
+    "simple-settings==0.16.0",
 ]
 
 setup(

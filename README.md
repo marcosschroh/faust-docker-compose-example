@@ -38,16 +38,15 @@ Useful ENVIRONMENT variables that you may change:
 
 |Variable| description  | example |
 |--------|--------------|---------|
-| PROJECT_SETTINGS       | File that contains project settings. For example [settings.ini](https://github.com/marcosschroh/faust-example/blob/master/settings.ini)|   `PROJECT_SETTINGS=settings.ini`|
 | WORKER | Entrypoint in setup.py | `example`|
 | WORKER_PORT | Worker port | `6066` |
 | WORKER_LOGLEVEL | Log level for the worker | `info`. |
-| CONFLUENT_BOOSTRAP_SERVER | Kafka servers | `kafka://kafka:9092` |
-| CONFLUENT_BOOSTRAP_SERVER_NAME | Kafka server name| `kafka` |
-| CONFLUENT_BOOSTRAP_SERVER_PORT | Kafka server port | `9092` |
-| CONFLUENT_SCHEMA_REGISTRY_SERVER | Schema registry server name | `schema-registry` |
-| CONFLUENT_SCHEMA_REGISTRY_SERVER_PORT | Schema registry server port | `8081` |
-| CONFLUENT_SCHEMA_REGISTRY_URL | Schema Registry Server url | `http://schema-registry:8081` |
+| KAFKA_BOOSTRAP_SERVER | Kafka servers | `kafka://kafka:9092` |
+| KAFKA_BOOSTRAP_SERVER_NAME | Kafka server name| `kafka` |
+| KAFKA_BOOSTRAP_SERVER_PORT | Kafka server port | `9092` |
+| SCHEMA_REGISTRY_SERVER | Schema registry server name | `schema-registry` |
+| SCHEMA_REGISTRY_SERVER_PORT | Schema registry server port | `8081` |
+| SCHEMA_REGISTRY_URL | Schema Registry Server url | `http://schema-registry:8081` |
 
 
 Commands:

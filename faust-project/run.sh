@@ -1,4 +1,6 @@
 #!/bin/bash
 set -x
 
-$WORKER worker -l $WORKER_LOGLEVEL -lINFO --web-port=$WORKER_PORT
+export SIMPLE_SETTINGS=settings
+
+$WORKER worker -l $WORKER_LOGLEVEL --web-port=$WORKER_PORT

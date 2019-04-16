@@ -18,6 +18,6 @@ async def users(users):
 
 @app.timer(5.0, on_leader=True)
 async def publish_users():
-    print('PUBLISHING ON LEADER!')
+    logger.info('PUBLISHING ON LEADER FOR USERS APP!')
     user = {"first_name": "foo", "last_name": "bar"}
     await users.send(value=user, value_serializer=avro_user_serializer)
