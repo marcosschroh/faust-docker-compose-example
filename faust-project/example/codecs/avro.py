@@ -5,11 +5,8 @@ from example.helpers.avro.serializer.faust_avro_serializer import AvroSerializer
 
 from simple_settings import settings
 
-
-SCHEMA_REGISTRY_URL = settings.SCHEMA_REGISTRY_URL
-
 # Initialize Schema Registry Client
-client = CachedSchemaRegistryClient(url=SCHEMA_REGISTRY_URL)
+client = CachedSchemaRegistryClient(url=settings.SCHEMA_REGISTRY_URL)
 
 avro_user_schema = SchemaFromJSONData({
      "type": "record",

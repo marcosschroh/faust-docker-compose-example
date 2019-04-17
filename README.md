@@ -40,7 +40,6 @@ Useful ENVIRONMENT variables that you may change:
 |--------|--------------|---------|
 | WORKER | Entrypoint in setup.py | `example`|
 | WORKER_PORT | Worker port | `6066` |
-| WORKER_LOGLEVEL | Log level for the worker | `info`. |
 | KAFKA_BOOSTRAP_SERVER | Kafka servers | `kafka://kafka:9092` |
 | KAFKA_BOOSTRAP_SERVER_NAME | Kafka server name| `kafka` |
 | KAFKA_BOOSTRAP_SERVER_PORT | Kafka server port | `9092` |
