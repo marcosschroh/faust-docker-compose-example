@@ -93,6 +93,14 @@ class UserModel(faust.Record, serializer='avro_users'):
  
  Now our application is able to send and receive message using arvo schemas!!!! :-)
 
+Tests
+-----
+
+Run tests with `tox`. Make sure that you have installed it.
+
+```
+tox
+```
 
 Achievements:
 ----
