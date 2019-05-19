@@ -8,6 +8,7 @@ requires = [
     "robinhood-aiokafka==1.0.2",
     "requests",
     "simple-settings==0.16.0",
+    "python-schema-registry-client==0.0.2",
 ]
 
 setup(
