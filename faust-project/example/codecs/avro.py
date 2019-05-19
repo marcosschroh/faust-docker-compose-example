@@ -1,12 +1,14 @@
 from avro.schema import SchemaFromJSONData
 
-from example.helpers.avro.schema_registry.client import CachedSchemaRegistryClient
-from example.helpers.avro.serializer.faust_avro_serializer import AvroSerializer
+from schema_registry.client import SchemaRegistryClient
 
 from simple_settings import settings
 
+from .serializers import AvroSerializer
+
+
 # Initialize Schema Registry Client
-client = CachedSchemaRegistryClient(url=settings.SCHEMA_REGISTRY_URL)
+client = SchemaRegistryClient(url=settings.SCHEMA_REGISTRY_URL)
 
 avro_user_schema = SchemaFromJSONData({
      "type": "record",
