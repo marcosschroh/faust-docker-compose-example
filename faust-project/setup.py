@@ -6,9 +6,9 @@ requires = [
     "fastavro",
     "faust==1.5.4",
     "robinhood-aiokafka==1.0.2",
-    "requests",
+    "requests==2.22.0",
     "simple-settings==0.16.0",
-    "python-schema-registry-client==0.0.2",
+    "python-schema-registry-client==0.2.4",
 ]
 
 setup(

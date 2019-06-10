@@ -21,9 +21,10 @@ avro_user_schema = SchemaFromJSONData({
 })
 
 avro_user_serializer = AvroSerializer(
-        schema_registry_client=client,
-        destination_topic="users",
-        schema=avro_user_schema)
+  schema_registry_client=client,
+  destination_topic="users",
+  schema=avro_user_schema
+)
 
 
 def avro_user_codec():

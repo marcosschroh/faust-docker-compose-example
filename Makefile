@@ -23,12 +23,15 @@ remove:
 	# Try this if this fails: docker rm -f $(docker ps -a -q)
 	docker-compose rm --force -v
 
+remove-network:
+	docker network rm faust-docker-compose_default
+
 stop:
 	docker-compose stop
 
 run-dev: build run
 
-clean: stop remove
+clean: stop remove remove-network
 
 # Kafka related
 create-topic:

@@ -23,8 +23,8 @@ class AvroSerializer(MessageSerializer, Codec):
 
     def _dumps(self, obj: Dict) -> bytes:
         return self.encode_record_with_schema(
-            topic=self.destination_topic,
-            schema=self.schema,
-            record=obj,
+            self.destination_topic,
+            self.schema,
+            obj,
             is_key=self.is_key
         )
