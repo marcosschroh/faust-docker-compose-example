@@ -1,10 +1,9 @@
 from avro.schema import SchemaFromJSONData
 
 from schema_registry.client import SchemaRegistryClient
+from schema_registry.serializers import FaustSerializer
 
 from simple_settings import settings
-
-from .serializers import AvroSerializer
 
 
 # Initialize Schema Registry Client
@@ -20,11 +19,7 @@ avro_user_schema = SchemaFromJSONData({
      ]
 })
 
-avro_user_serializer = AvroSerializer(
-  schema_registry_client=client,
-  destination_topic="users",
-  schema=avro_user_schema
-)
+avro_user_serializer = FaustSerializer(client, "users", avro_user_schema)
 
 
 def avro_user_codec():

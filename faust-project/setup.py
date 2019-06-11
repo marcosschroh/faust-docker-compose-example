@@ -4,16 +4,15 @@ requires = [
     "avro-python3",
     "colorlog==3.1.4",
     "fastavro",
-    "faust==1.5.4",
-    "robinhood-aiokafka==1.0.2",
+    "robinhood-aiokafka==1.0.3",
     "requests==2.22.0",
     "simple-settings==0.16.0",
-    "python-schema-registry-client==0.2.4",
+    "python-schema-registry-client[faust]==0.3.0",
 ]
 
 setup(
     name='faust-example',
-    version='1.1.1',
+    version='1.1.2',
     description='Faust example with Docker Compose',
     long_description='''
     Example running Faust with Docker Compose (zookeeper, kafka and schema-registry)
