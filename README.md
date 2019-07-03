@@ -1,6 +1,9 @@
 Faust-Docker-Compose
 ====================
 
+[![Build Status](https://travis-ci.org/marcosschroh/faust-docker-compose-example.svg?branch=master)](https://travis-ci.org/marcosschroh/faust-docker-compose-example)
+[![License](https://img.shields.io/github/license/marcosschroh/faust-docker-compose-example.svg?logo=MIT)](https://github.com/marcosschroh/faust-docker-compose-example/blob/master/LICENSE)
+
 Example running Faust with Docker Compose with [Kafka](https://kafka.apache.org/), [Zookeeper](https://zookeeper.apache.org/) and [Schema Registry](https://docs.confluent.io/current/schema-registry/docs/index.html). 
 
 Read more about Faust here: 
@@ -111,7 +114,3 @@ Achievements:
 * [x] Custom Serializers
 * [x] Avro Schemas
 * [x] Make Schema Registry Client and Serializers a python package
-
-WIP:
-----
-* Add travis integration
