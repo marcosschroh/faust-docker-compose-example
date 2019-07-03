@@ -1,0 +1,16 @@
+# Config file for automatic testing at travis-ci.org
+dist: xenial   # required for Python >= 3.7
+
+language: python
+
+services:
+  - docker
+
+before_install:
+  - docker-compose -v
+  - docker -v
+
+matrix:
+  include:	
+    - name: Docker image
+      script: ./scripts/test_docker.sh
