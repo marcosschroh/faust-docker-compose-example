@@ -11,7 +11,7 @@ requires = [
 
 setup(
     name='faust-example',
-    version='1.1.4',
+    version='1.2.1',
     description='Faust example with Docker Compose',
     long_description='''
     Example running Faust with Docker Compose (zookeeper, kafka and schema-registry)
