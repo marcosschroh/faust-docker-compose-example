@@ -1,4 +1,4 @@
-faust==1.5.4
+faust==1.7.0
 simple-settings==0.16.0
 
 # Testing
