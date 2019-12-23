@@ -2,11 +2,12 @@ from setuptools import setup, find_packages
 
 requires = [
     "colorlog>=3.1.4",
-    "fastavro>=0.22.3",
+    "fastavro<=0.22.3",
     "robinhood-aiokafka>=1.0.3",
     "requests>=2.22.0",
     "simple-settings>=0.16.0",
     "python-schema-registry-client[faust]>=1.0.0",
+    "typing-extensions==3.7.4.1",
 ]
 
 setup(
