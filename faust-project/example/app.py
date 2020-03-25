@@ -15,4 +15,3 @@ app = faust.App(
 
 def main() -> None:
     app.main()
-
