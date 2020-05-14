@@ -1,13 +1,11 @@
 # Faust-Docker-Compose
 
-An Example to show how to include a `faust` project as a service using `docker compose`.
-
-If you want to generate a `faust` project from scratch, please use the [cookiecutter-faust](https://github.com/marcosschroh/cookiecutter-faust)
-
 [![Build Status](https://travis-ci.org/marcosschroh/faust-docker-compose-example.svg?branch=master)](https://travis-ci.org/marcosschroh/faust-docker-compose-example)
 [![License](https://img.shields.io/github/license/marcosschroh/faust-docker-compose-example.svg?logo=MIT)](https://github.com/marcosschroh/faust-docker-compose-example/blob/master/LICENSE)
 
-Example running Faust with Docker Compose with [Kafka](https://kafka.apache.org/), [Zookeeper](https://zookeeper.apache.org/) and [Schema Registry](https://docs.confluent.io/current/schema-registry/docs/index.html)
+An example to show how to include a `faust` project as a service using `docker compose`, with [Kafka](https://kafka.apache.org/), [Zookeeper](https://zookeeper.apache.org/) and [Schema Registry](https://docs.confluent.io/current/schema-registry/docs/index.html)
+
+If you want to generate a `faust` project from scratch, please use the [cookiecutter-faust](https://github.com/marcosschroh/cookiecutter-faust)
 
 Read more about Faust here: https://github.com/robinhood/faust
 
