@@ -5,6 +5,9 @@
 
 An example to show how to include a `faust` project as a service using `docker compose`, with [Kafka](https://kafka.apache.org/), [Zookeeper](https://zookeeper.apache.org/) and [Schema Registry](https://docs.confluent.io/current/schema-registry/docs/index.html)
 
+Notice that everything runs using `docker-compose`, including the faust example application. For
+local development is preferable to run the `kafka` cluster separate from the `faust app`.
+
 If you want to generate a `faust` project from scratch, please use the [cookiecutter-faust](https://github.com/marcosschroh/cookiecutter-faust)
 
 Read more about Faust here: https://github.com/robinhood/faust
