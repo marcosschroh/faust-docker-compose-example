@@ -3,6 +3,7 @@ from schema_registry.serializers import FaustSerializer
 
 from simple_settings import settings
 
+from example.users.models import AdvanceUserModel
 
 # Initialize Schema Registry Client
 client = SchemaRegistryClient(url=settings.SCHEMA_REGISTRY_URL)
@@ -19,6 +20,14 @@ avro_user_schema = schema.AvroSchema({
 
 avro_user_serializer = FaustSerializer(client, "users", avro_user_schema)
 
+# example of how to use it with dataclasses-avroschema
+avro_advance_user_serializer = FaustSerializer(
+    client, "advance_users", AdvanceUserModel.avro_schema())
+
 
 def avro_user_codec():
     return avro_user_serializer
+
+
+def avro_advance_user_codec():
+    return avro_advance_user_serializer

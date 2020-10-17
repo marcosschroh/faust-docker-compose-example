@@ -2,9 +2,12 @@ from setuptools import setup, find_packages
 
 requires = [
     "colorlog>=3.1.4",
-    "simple-settings",
+    "dataclasses-avroschema",
     "faust",
     "python-schema-registry-client",
+    "yarl<1.6.0,>=1.0",
+    "multidict<5.0,>=4.5",
+    "simple-settings",
     "typing-extensions",
 ]
 
@@ -34,6 +37,7 @@ setup(
         ],
         'faust.codecs': [
             'avro_users = example.codecs.avro:avro_user_codec',
+            'avro_advance_users = example.codecs.avro:avro_advance_user_codec',
         ],
     },
 )
