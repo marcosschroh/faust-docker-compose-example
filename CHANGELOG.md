@@ -2,10 +2,13 @@
 
 All notable changes to rae-helm will be documented in this file.
 
+## 2020-10-17
+
+- Example with [dataclasses-avroschema](https://github.com/marcosschroh/dataclasses-avroschema) added
+
 ## 2020-09-24
 
 - requirements upated to latest version
-
 - Test docker image added
 - Travis integration added
 
